@@ -29,6 +29,13 @@ class FlashcardCollectionController extends Controller
     public function show(FlashcardCollection $collection): Response
     {
         $this->authorize("view", $collection);
+
+        $flashcards = $collection->flashcards;
+
+        return response()->view("collections.show", [
+            "collection" => $collection,
+            "flashcard" => $flashcards
+        ]);
     }
 
     public function create(): Response

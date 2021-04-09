@@ -32040,7 +32040,17 @@ select {
   letter-spacing: 0.05em;
 }
 
-form {
+.button.button--danger {
+  --tw-bg-opacity: 1;
+  background-color: rgba(239, 68, 68, var(--tw-bg-opacity));
+}
+
+.button.button--danger:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(220, 38, 38, var(--tw-bg-opacity));
+}
+
+form.form {
   --tw-bg-opacity: 1;
   background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
   border-radius: 0.75rem;
@@ -32096,6 +32106,12 @@ label .label__meta {
 .input {
   --tw-text-opacity: 1;
   color: rgba(55, 65, 81, var(--tw-text-opacity));
+}
+
+.title {
+  font-weight: 700;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 
 @media (min-width: 640px) {

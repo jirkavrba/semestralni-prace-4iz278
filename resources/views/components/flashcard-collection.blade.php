@@ -12,7 +12,7 @@
                 <span class="fas fa-lock"></span>
                 <span class="ml-1">private collection</span>
             @endif
-            </span>
+        </span>
         <p class="mt-2 text-gray-500 tracking-wide">
             This collection contains
             <strong class="text-gray-800">{{ $collection->flashcards->count() }}</strong>

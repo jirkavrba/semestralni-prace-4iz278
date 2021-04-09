@@ -1,10 +1,10 @@
 @extends("layout.app")
 
 @section("content")
-    <h1 class="text-4xl font-bold">Create a new collection</h1>
+    <h1 class="title">Create a new collection</h1>
 
     <div class="mt-10">
-        <form action="{{ route("collections.store") }}" method="post" class="w-1/2">
+        <form action="{{ route("collections.store") }}" method="post" class="form w-1/2">
             @csrf
             <div class="mb-5 flex flex-col">
                 <label for="title">Title</label>
