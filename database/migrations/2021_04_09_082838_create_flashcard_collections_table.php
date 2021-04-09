@@ -18,6 +18,7 @@ class CreateFlashcardCollectionsTable extends Migration
             $table->integer("user_id");
             $table->string("title");
             $table->string("description")->nullable();
+            $table->boolean("is_public")->default(false);
             $table->timestamps();
         });
     }
