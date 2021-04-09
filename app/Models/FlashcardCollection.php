@@ -18,6 +18,11 @@ class FlashcardCollection extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        "title",
+        "description"
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

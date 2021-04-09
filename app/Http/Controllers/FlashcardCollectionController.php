@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Middleware\Authenticate;
+use App\Http\Requests\FlashcardCollection\CreateFlashcardCollectionRequest;
 use App\Models\FlashcardCollection;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 
 class FlashcardCollectionController extends Controller
@@ -27,5 +29,17 @@ class FlashcardCollectionController extends Controller
     public function create(): Response
     {
         return response()->view("collections.create");
+    }
+
+    public function store(CreateFlashcardCollectionRequest $request): RedirectResponse
+    {
+        $collection = $this->user()->collections()->create([
+            "title" => $request->input("title"),
+            "description" => $request->input("description")
+        ]);
+
+        $collection->save();
+
+        return redirect()->route("collections.show", $collection->id);
     }
 }
