@@ -11,6 +11,7 @@
             <a href="{{ route("collections.create") }}" class="button">Create a new collection</a>
         </div>
         @forelse($owned as $collection)
+            <x-flashcard-collection :collection="$collection"/>
         @empty
             <div class="flex flex-col items-center px-10 py-20 my-5 bg-gray-50 rounded-xl">
                 <div class="flex items-center justify-center bg-gray-200 w-32 h-32 rounded-full mb-10">
