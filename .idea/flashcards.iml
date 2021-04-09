@@ -117,9 +117,12 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/league/oauth1-client" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/socialiteproviders/microsoft-azure" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/socialiteproviders/manager" />
+      <excludeFolder url="file://$MODULE_DIR$/resources/css" />
+      <excludeFolder url="file://$MODULE_DIR$/resources/js" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="halfmoon" level="application" />
+    <orderEntry type="library" name="926e679c11" level="application" />
   </component>
 </module>

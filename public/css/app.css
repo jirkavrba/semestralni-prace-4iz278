@@ -31833,6 +31833,13 @@ video {
   --tw-backdrop-sepia: sepia(100%);
 }
 
+.app-container {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
