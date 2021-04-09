@@ -23,4 +23,9 @@ class FlashcardCollectionController extends Controller
             "public" => $public
         ]);
     }
+
+    public function create(): Response
+    {
+        return response()->view("collections.create");
+    }
 }
