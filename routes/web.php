@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\FlashcardCollectionController;
 use App\Http\Controllers\FlashcardController;
+use App\Http\Controllers\FlashcardQuestionController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,4 +30,5 @@ Route::middleware("auth")->group(function () {
 
 
 Route::resource("collections", FlashcardCollectionController::class);
-Route::resource("collections.flashcards", FlashcardController::class);
+Route::resource("collections.flashcards", FlashcardController::class)->except("index");
+Route::resource("collections.flashcards.questions", FlashcardQuestionController::class)->except("index", "show");
