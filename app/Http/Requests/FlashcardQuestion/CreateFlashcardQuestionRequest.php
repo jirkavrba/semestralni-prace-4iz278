@@ -27,7 +27,6 @@ class CreateFlashcardQuestionRequest extends FormRequest
         return [
             "question" => ["required", "string"],
             "answer" => ["required", "string"],
-            "external_resource_link" => ["string"]
         ];
     }
 }

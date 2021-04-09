@@ -59,7 +59,14 @@
 
     <div class="my-5 border-t"></div>
 
-    @foreach($flashcard->questions as $questions)
-        {{ $question }}
+    @foreach($flashcard->questions as $question)
+        <div class="bg-gray-100 mb-5 py-4 px-6 rounded-lg text-lg font-bold flex flex-row items-center justify-start">
+            <a href="{{ route("collections.flashcards.questions.edit", [$collection, $flashcard, $question]) }}"
+               class="w-10 h-10 bg-gray-500 flex items-center justify-center rounded-full mr-3 transition hover:bg-blue-500">
+                <span class="fas fa-pen text-white"></span>
+            </a>
+            <span class="text-gray-600">{{ $question->question }}</span>
+        </div>
     @endforeach
+
 @endsection
