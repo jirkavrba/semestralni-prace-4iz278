@@ -57,15 +57,21 @@
     <div class="my-10 border-t"></div>
 
     <div class="flex flex-row flex-wrap">
-        <a href="{{ route("collections.flashcards.create", $collection) }}"
-            class="flex flex-col w-1/4 h-48 rounded-xl bg-gradient-to-br from-green-500 to-green-700 items-center justify-center transition transform shadow
+        <div class="pr-5 w-1/4">
+            <a href="{{ route("collections.flashcards.create", $collection) }}"
+               class="flex flex-col w-full h-48 rounded-xl bg-gradient-to-br from-green-500 to-green-700 items-center justify-center transition transform shadow
             hover:-translate-y-2 hover:from-green-400 hover:to-green-600 hover:shadow-xl">
-            <div class="w-16 h-16 bg-green-800 flex items-center justify-center rounded-full">
-                <em class="fas fa-plus text-white text-4xl"></em>
-            </div>
-            <div class="mt-5">
-                <span class="uppercase text-lg font-bold tracking-wide text-white">Add a new flashcard</span>
-            </div>
-        </a>
+                <div class="w-16 h-16 bg-green-800 flex items-center justify-center rounded-full">
+                    <em class="fas fa-plus text-white text-4xl"></em>
+                </div>
+                <div class="mt-5">
+                    <span class="uppercase text-lg font-bold tracking-wide text-white">Add a new flashcard</span>
+                </div>
+            </a>
+        </div>
+
+        @foreach($collection->flashcards as $flashcard)
+            <x-flashcard :flashcard="$flashcard" :collection="$collection"/>
+        @endforeach
     </div>
 @endsection
