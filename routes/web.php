@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,13 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [HomeController::class, "index"])->name("index");
+
 Route::get("/login", [AuthenticationController::class, "login"])->name("login");
 Route::get("/login/callback", [AuthenticationController::class, "callback"])->name("login.callback");
+Route::get("/logout", [AuthenticationController::class, "logout"])->name("logout");
 
-Route::get('/', function () {
-    return view('welcome');
-})->name("index");
-
-Route::get('/home', function () {
-    return view('welcome');
-})->name("homepage");
+Route::middleware("auth")->group(function () {
+    Route::get('/home', [HomeController::class, "homepage"])->name("homepage");
+});
