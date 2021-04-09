@@ -11,9 +11,9 @@
     <title>Flashcards</title>
 </head>
 <body>
-<main class="app-container">
+<div class="app-container">
     @yield("app")
-</main>
+</div>
 <script src="https://kit.fontawesome.com/926e679c11.js" crossorigin="anonymous"></script>
 </body>
 </html>
