@@ -28,5 +28,5 @@ Route::middleware("auth")->group(function () {
 });
 
 
-Route::resource("flashcard_collections", FlashcardCollectionController::class);
-Route::resource("flashcard_collections.flashcards", FlashcardController::class);
+Route::resource("collections", FlashcardCollectionController::class);
+Route::resource("collections.flashcards", FlashcardController::class);

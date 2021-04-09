@@ -2,11 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * Class FlashcardCollection
+ * @package App\Models
+ *
+ * @method static Builder public(?int $exceptUser = null)
+ */
 class FlashcardCollection extends Model
 {
     use HasFactory;
@@ -19,5 +26,16 @@ class FlashcardCollection extends Model
     public function flashcards(): HasMany
     {
         return $this->hasMany(Flashcard::class);
+    }
+
+    public function scopePublic(Builder $query, ?int $exceptUser = null): Builder
+    {
+        $query->where("is_public", "=", true);
+
+        if ($exceptUser !== null) {
+            $query->where("user_id", "!=", $exceptUser);
+        }
+
+        return $query;
     }
 }
