@@ -19,7 +19,7 @@
         </section>
     </header>
 
-    <main>
+    <main class="flex flex-col container mx-auto mt-10 p-5">
         @yield("content")
     </main>
 @endsection
