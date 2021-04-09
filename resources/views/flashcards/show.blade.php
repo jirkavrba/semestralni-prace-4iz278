@@ -31,7 +31,8 @@
 
         @can("update", $collection)
             <div class="flex flex-row">
-                <a href="{{ route("collections.flashcards.edit", [$collection, $flashcard]) }}" class="button mr-2">Edit</a>
+                <a href="{{ route("collections.flashcards.edit", [$collection, $flashcard]) }}"
+                   class="button mr-2">Edit</a>
                 <form action="{{ route("collections.flashcards.destroy", [$collection, $flashcard]) }}" method="post">
                     @csrf
                     @method("delete")
@@ -49,4 +50,16 @@
             <p>{{ $flashcard->description }}</p>
         </div>
     @endif
+
+    <div class="mt-5">
+        <a href="{{ route("collections.flashcards.questions.create", [$collection, $flashcard]) }}" class="button">
+            Add a new question
+        </a>
+    </div>
+
+    <div class="my-5 border-t"></div>
+
+    @foreach($flashcard->questions as $questions)
+        {{ $question }}
+    @endforeach
 @endsection
