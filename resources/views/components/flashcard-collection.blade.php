@@ -1,19 +1,18 @@
-<div class="inline-flex w-1/3 pr-4">
+<div class="inline-block w-1/3 pr-4">
     <a href="{{ route("collections.show", $collection->id) }}"
-       class="my-5 pb-4 pt-8 px-10 w-full rounded-lg flex flex-col transition transform shadow-md
-       translate-y-0 hover:-translate-y-3 hover:shadow-xl bg-gradient-to-br from-gray-100 to-gray-200 hover:from-gray-100 hover:to-white">
+       class="my-5 pb-4 pt-8 px-10 w-full rounded-lg flex flex-col transition transform shadow-md translate-y-0 hover:-translate-y-2 hover:shadow-xl bg-gradient-to-br from-gray-100 to-gray-200 hover:from-gra-100 hover:to-blue-100">
         <div class="text-3xl font-bold text-gray-700 flex flex-row items-center">
             <h1>{{ $collection->title }}</h1>
-            <span class="text-sm ml-5 text-gray-400 uppercase tracking-wider">
-                @if ($collection->is_public)
-                    <span class="fas fa-lock"></span>
-                    <span class="ml-1">private collection</span>
-                @else
-                    <span class="fas fa-users"></span>
-                    <span class="ml-1">public collection</span>
-                @endif
-            </span>
         </div>
+        <span class="text-sm mt-1 font-bold text-gray-400 uppercase tracking-wider">
+                @if ($collection->is_public)
+                <span class="fas fa-lock"></span>
+                <span class="ml-1">private collection</span>
+            @else
+                <span class="fas fa-users"></span>
+                <span class="ml-1">public collection</span>
+            @endif
+            </span>
         <p class="mt-2 text-gray-500 tracking-wide">
             This collection contains
             <strong class="text-gray-800">{{ $collection->flashcards->count() }}</strong>
