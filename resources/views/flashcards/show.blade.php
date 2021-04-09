@@ -5,7 +5,9 @@
         <div>
             <h1 class="title">{{ $flashcard->title }}</h1>
             <div class="flex flex-row text-sm mt-1 font-bold text-gray-400 uppercase tracking-wider items-center">
-                {{ $collection->title }}
+                <a href="{{ route("collections.show", $collection) }}" class="font-bold hover:text-blue-500">
+                    {{ $collection->title }}
+                </a>
 
                 <span class="mx-5">
                     &mdash;
@@ -41,4 +43,10 @@
             </div>
         @endcan
     </div>
+
+    @unless (empty($flashcard->description))
+        <div class="mt-5 text-2xl text-gray-700">
+            <p>{{ $flashcard->description }}</p>
+        </div>
+    @endif
 @endsection

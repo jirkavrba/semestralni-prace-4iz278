@@ -46,4 +46,33 @@ class FlashcardController extends Controller
             "collection" => $collection
         ]);
     }
+
+    public function edit(FlashcardCollection $collection, Flashcard $flashcard): Response
+    {
+        $this->authorize("update", $collection);
+
+        return response()->view("flashcards.edit", [
+            "flashcard" => $flashcard,
+            "collection" => $collection
+        ]);
+    }
+
+    public function update(FlashcardCollection $collection, Flashcard $flashcard, CreateFlashcardRequest $request): RedirectResponse
+    {
+        $this->authorize("update", $collection);
+
+        $flashcard->update($request->only("title", "description"));
+
+        return redirect()->route("collections.flashcards.show", [$collection, $flashcard]);
+    }
+
+    public function destroy(FlashcardCollection $collection, Flashcard $flashcard): RedirectResponse
+    {
+        $this->authorize("delete", $collection);
+
+        // TODO: Delete all questions when implemented
+        $flashcard->delete();
+
+        return redirect()->route("collections.show", $collection);
+    }
 }
