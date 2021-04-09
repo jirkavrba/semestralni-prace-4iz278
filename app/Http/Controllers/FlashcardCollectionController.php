@@ -55,4 +55,30 @@ class FlashcardCollectionController extends Controller
 
         return redirect()->route("collections.show", $collection->id);
     }
+
+    public function edit(FlashcardCollection $collection): Response
+    {
+        $this->authorize("update", $collection);
+
+        return response()->view("collections.edit", ["collection" => $collection]);
+    }
+
+    public function update(FlashcardCollection $collection, CreateFlashcardCollectionRequest $request): RedirectResponse
+    {
+        $this->authorize("update", $collection);
+
+        $collection->update($request->only(["title", "description", "is_public"]));
+
+        return redirect()->route("collections.show", $collection);
+    }
+
+    public function destroy(FlashcardCollection $collection): RedirectResponse
+    {
+        $this->authorize("delete", $collection);
+
+        $collection->flashcards()->delete();
+        $collection->delete();
+
+        return redirect()->route("collections.index");
+    }
 }
