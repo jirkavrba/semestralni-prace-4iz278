@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\FlashcardCollectionController;
+use App\Http\Controllers\FlashcardController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +26,7 @@ Route::get("/logout", [AuthenticationController::class, "logout"])->name("logout
 Route::middleware("auth")->group(function () {
     Route::get('/home', [HomeController::class, "homepage"])->name("homepage");
 });
+
+
+Route::resource("flashcard_collections", FlashcardCollectionController::class);
+Route::resource("flashcard_collections.flashcards", FlashcardController::class);
