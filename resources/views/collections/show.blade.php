@@ -39,10 +39,33 @@
                 <form action="{{ route("collections.destroy", $collection) }}" method="post">
                     @csrf
                     @method("delete")
-                    <button class="button button--danger" onclick="return confirm('Are you sure? This operation will delete all flashcards as well.')">Delete</button>
+                    <button class="button button--danger"
+                            onclick="return confirm('Are you sure? This operation will delete all flashcards as well.')">
+                        Delete
+                    </button>
                 </form>
             </div>
         @endcan
     </div>
 
+    @unless (empty($collection->description))
+        <div class="mt-5 text-2xl text-gray-700">
+            <p>{{ $collection->description }}</p>
+        </div>
+    @endif
+
+    <div class="my-10 border-t"></div>
+
+    <div class="flex flex-row flex-wrap">
+        <a href="{{ route("collections.flashcards.create", $collection) }}"
+            class="flex flex-col w-1/4 h-48 rounded-xl bg-gradient-to-br from-green-500 to-green-700 items-center justify-center transition transform shadow
+            hover:-translate-y-2 hover:from-green-400 hover:to-green-600 hover:shadow-xl">
+            <div class="w-16 h-16 bg-green-800 flex items-center justify-center rounded-full">
+                <em class="fas fa-plus text-white text-4xl"></em>
+            </div>
+            <div class="mt-5">
+                <span class="uppercase text-lg font-bold tracking-wide text-white">Add a new flashcard</span>
+            </div>
+        </a>
+    </div>
 @endsection
