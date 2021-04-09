@@ -2,7 +2,7 @@
 
 @section("app")
     <header class="flex justify-between py-5 px-10 items-center shadow-lg">
-        <h1 class="text-4xl font-bold text-gray-800">Flashcards</h1>
+        <a class="text-4xl font-bold text-gray-800" href="{{ route("homepage") }}">Flashcards</a>
 
         <section class="flex flex-row items-center">
             <div class="flex flex-row items-center mr-10">
