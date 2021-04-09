@@ -30,7 +30,7 @@ class FlashcardCollection extends Model
 
     public function flashcards(): HasMany
     {
-        return $this->hasMany(Flashcard::class);
+        return $this->hasMany(Flashcard::class, "collection_id", "id");
     }
 
     public function scopePublic(Builder $query, ?int $exceptUser = null): Builder
