@@ -3,12 +3,22 @@
 @section("content")
     <h1 class="text-4xl font-bold">Create a new collection</h1>
 
-    <div class="mt-5 mb-10 border-b"></div>
+    <div class="mt-10">
+        <form action="{{ route("collections.store") }}" method="post" class="w-1/2">
+            @csrf
+            <div class="mb-5 flex flex-col">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" value="{{ old("title") }}" required class="input">
+            </div>
 
-    <div>
-        <div class="flex justify-between items-center">
-            <h2 class="text-3xl font-bold text-gray-700">Your collections</h2>
-            <a href="{{ route("collections.create") }}" class="button">Create a new collection</a>
-        </div>
+            <div class="mb-5 flex flex-col">
+                <label for="description" class="">Description <span class="label__meta">(optional)</span></label>
+                <textarea type="text" id="description" name="description" class="input">{{ old("description") }}</textarea>
+            </div>
+
+            <div>
+                <button class="button">Create collection</button>
+            </div>
+        </form>
     </div>
 @endsection
