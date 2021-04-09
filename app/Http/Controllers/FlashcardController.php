@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Middleware\Authenticate;
 use App\Http\Requests\Flashcards\CreateFlashcardRequest;
+use App\Models\Flashcard;
 use App\Models\FlashcardCollection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -34,5 +35,15 @@ class FlashcardController extends Controller
         $flashcard->save();
 
         return redirect()->route("collections.flashcards.show", [$collection, $flashcard]);
+    }
+
+    public function show(FlashcardCollection $collection, Flashcard $flashcard): Response
+    {
+        $this->authorize("view", $collection);
+
+        return response()->view("flashcards.show", [
+            "flashcard" => $flashcard,
+            "collection" => $collection
+        ]);
     }
 }
