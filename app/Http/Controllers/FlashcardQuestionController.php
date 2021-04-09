@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FlashcardQuestion\CreateFlashcardQuestionRequest;
 use App\Models\Flashcard;
 use App\Models\FlashcardCollection;
+use App\Models\FlashcardQuestion;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 
@@ -34,6 +35,39 @@ class FlashcardQuestionController extends Controller
         if ($request->has("another")) {
             return redirect()->route("collections.flashcards.questions.create", [$collection, $flashcard]);
         }
+
+        return redirect()->route("collections.flashcards.show", [$collection, $flashcard]);
+    }
+
+    public function edit(FlashcardCollection $collection, Flashcard $flashcard, FlashcardQuestion $question): Response
+    {
+        $this->authorize("update", $collection);
+
+        return response()->view("questions.edit", [
+            "collection" => $collection,
+            "flashcard" => $flashcard,
+            "question" => $question
+        ]);
+    }
+
+    public function update(
+        FlashcardCollection $collection,
+        Flashcard $flashcard,
+        FlashcardQuestion $question,
+        CreateFlashcardQuestionRequest $request
+    )
+    {
+        $this->authorize("update", $collection);
+
+        $question->update($request->only("answer", "question", "external_resource_link"));
+
+        return redirect()->route("collections.flashcards.show", [$question, $flashcard]);
+    }
+
+    public function destroy(FlashcardCollection $collection, Flashcard $flashcard, FlashcardQuestion $question) {
+        $this->authorize("delete", $collection);
+
+        $question->delete();
 
         return redirect()->route("collections.flashcards.show", [$collection, $flashcard]);
     }
