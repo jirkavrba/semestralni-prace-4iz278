@@ -1,16 +1,16 @@
 <div class="inline-block w-1/3 pr-4">
     <a href="{{ route("collections.show", $collection->id) }}"
-       class="my-5 pb-4 pt-8 px-10 w-full rounded-lg flex flex-col transition transform shadow-md translate-y-0 hover:-translate-y-2 hover:shadow-xl bg-gradient-to-br from-gray-100 to-gray-200 hover:from-gra-100 hover:to-blue-100">
+       class="mt-5 pb-4 pt-8 px-10 w-full rounded-lg flex flex-col transition transform shadow-md translate-y-0 hover:-translate-y-2 hover:shadow-xl bg-gradient-to-br from-gray-100 to-gray-200 hover:from-gra-100 hover:to-blue-100">
         <div class="text-3xl font-bold text-gray-700 flex flex-row items-center">
             <h1>{{ $collection->title }}</h1>
         </div>
         <span class="text-sm mt-1 font-bold text-gray-400 uppercase tracking-wider">
-                @if ($collection->is_public)
-                <span class="fas fa-lock"></span>
-                <span class="ml-1">private collection</span>
-            @else
+            @if ($collection->is_public)
                 <span class="fas fa-users"></span>
                 <span class="ml-1">public collection</span>
+            @else
+                <span class="fas fa-lock"></span>
+                <span class="ml-1">private collection</span>
             @endif
             </span>
         <p class="mt-2 text-gray-500 tracking-wide">

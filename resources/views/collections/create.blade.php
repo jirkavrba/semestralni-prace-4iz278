@@ -12,8 +12,16 @@
             </div>
 
             <div class="mb-5 flex flex-col">
-                <label for="description" class="">Description <span class="label__meta">(optional)</span></label>
+                <label for="description">Description <span class="label__meta">(optional)</span></label>
                 <textarea type="text" id="description" name="description" class="input">{{ old("description") }}</textarea>
+            </div>
+
+            <div class="mb-5 flex flex-col">
+                <label for="is_public">Visibility</label>
+                <select name="is_public" id="is_public" class="input">
+                    <option value="1">Public</option>
+                    <option value="0">Private</option>
+                </select>
             </div>
 
             <div>

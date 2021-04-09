@@ -26,6 +26,11 @@ class FlashcardCollectionController extends Controller
         ]);
     }
 
+    public function show(FlashcardCollection $collection): Response
+    {
+        $this->authorize("view", $collection);
+    }
+
     public function create(): Response
     {
         return response()->view("collections.create");
@@ -35,7 +40,8 @@ class FlashcardCollectionController extends Controller
     {
         $collection = $this->user()->collections()->create([
             "title" => $request->input("title"),
-            "description" => $request->input("description")
+            "description" => $request->input("description"),
+            "is_public" => $request->input("is_public")
         ]);
 
         $collection->save();

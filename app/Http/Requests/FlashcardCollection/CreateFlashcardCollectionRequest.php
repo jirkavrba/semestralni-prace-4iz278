@@ -26,7 +26,8 @@ class CreateFlashcardCollectionRequest extends FormRequest
     {
         return [
             "title" => ["required", "string"],
-            "description" => ["string"]
+            "is_public" => ["required", "boolean"],
+            "description" => ["string"],
         ];
     }
 }

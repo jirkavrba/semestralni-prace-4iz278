@@ -20,7 +20,8 @@ class FlashcardCollection extends Model
 
     protected $fillable = [
         "title",
-        "description"
+        "description",
+        "is_public"
     ];
 
     public function user(): BelongsTo
