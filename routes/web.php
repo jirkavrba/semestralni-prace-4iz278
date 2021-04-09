@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use RootInc\LaravelAzureMiddleware\Azure;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +13,6 @@ use RootInc\LaravelAzureMiddleware\Azure;
 |
 */
 
-Route::get("/login/azure", [Azure::class, "azure"]);
-Route::get("/login/azurecallback", [Azure::class, "azurecallback"]);
+Route::get('/', function () {
+    return view('welcome');
+});
