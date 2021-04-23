@@ -18,7 +18,6 @@ class HomeController extends Controller
 
     public function homepage(): Response
     {
-        // TODO: Fetch favorite collections etc...
         return response()->view("home");
     }
 }

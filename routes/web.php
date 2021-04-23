@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\FlashcardCollectionController;
 use App\Http\Controllers\FlashcardController;
 use App\Http\Controllers\FlashcardQuestionController;
@@ -32,3 +33,9 @@ Route::middleware("auth")->group(function () {
 Route::resource("collections", FlashcardCollectionController::class);
 Route::resource("collections.flashcards", FlashcardController::class)->except("index");
 Route::resource("collections.flashcards.questions", FlashcardQuestionController::class)->except("index", "show");
+
+Route::post("/collections/{collection}/favorite", [FavoritesController::class, 'favoriteCollection'])->name("collections.favorite");
+Route::post("/collections/{collection}/unfavorite", [FavoritesController::class, 'unfavoriteCollection'])->name("collections.unfavorite");
+
+Route::post("/collections/{collection}/flashcards/{flashcard}/favorite", [FavoritesController::class, "favoriteFlashcard"])->name("collections.flashcards.favorite");
+Route::post("/collections/{collection}/flashcards/{flashcard}/unfavorite", [FavoritesController::class, "unfavoriteFlashcard"])->name("collections.flashcards.unfavorite");
