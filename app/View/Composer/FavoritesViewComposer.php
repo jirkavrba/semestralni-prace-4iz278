@@ -23,12 +23,10 @@ class FavoritesViewComposer
             return $view;
         }
 
-        $this->collections ??= $user->favoriteCollections->pluck("flashcard_collection_id");
-        $this->flashcards ??= $user->favoriteFlashcards->pluck("flashcard_id");
 
         return $view->with([
-            "favoriteCollections" => $this->collections,
-            "favoriteFlashcards" => $this->flashcards,
+            "favoriteCollections" => fn () => $this->collections ??= $user->favoriteCollections->pluck("flashcard_collection_id"),
+            "favoriteFlashcards" => fn () => $this->flashcards ??= $user->favoriteFlashcards->pluck("flashcard_id"),
         ]);
     }
 }
