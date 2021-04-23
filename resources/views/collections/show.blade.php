@@ -57,6 +57,7 @@
     <div class="my-10 border-t"></div>
 
     <div class="flex flex-row flex-wrap">
+        @can("update", $collection)
         <div class="pr-5 w-1/4">
             <a href="{{ route("collections.flashcards.create", $collection) }}"
                class="flex flex-col w-full h-48 rounded-xl bg-gradient-to-br from-green-500 to-green-700 items-center justify-center transition transform shadow
@@ -69,6 +70,7 @@
                 </div>
             </a>
         </div>
+        @endcan
 
         @foreach($collection->flashcards as $flashcard)
             <x-flashcard :flashcard="$flashcard" :collection="$collection"/>
