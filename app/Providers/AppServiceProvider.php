@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use App\View\Composer\FavoritesViewComposer;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\View\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,7 +30,6 @@ class AppServiceProvider extends ServiceProvider
             URL::forceScheme('https');
         }
 
-        // Indicates logged-in user
-        View::composer("layout.app", FavoritesViewComposer::class);
+        View::composer("*", FavoritesViewComposer::class);
     }
 }

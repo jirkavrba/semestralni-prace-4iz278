@@ -19,6 +19,10 @@ class FavoritesViewComposer
         /** @var User $user */
         $user = Auth::user();
 
+        if ($user === null) {
+            return $view;
+        }
+
         $this->collections ??= $user->favoriteCollections->pluck("flashcard_collection_id");
         $this->flashcards ??= $user->favoriteFlashcards->pluck("flashcard_id");
 
