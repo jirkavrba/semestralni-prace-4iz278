@@ -31,5 +31,6 @@
     @yield("app")
 </div>
 <script src="https://kit.fontawesome.com/926e679c11.js" crossorigin="anonymous"></script>
+<script src="/js/favorites.js"></script>
 </body>
 </html>
