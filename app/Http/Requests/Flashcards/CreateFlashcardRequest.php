@@ -26,7 +26,7 @@ class CreateFlashcardRequest extends FormRequest
     {
         return [
             "title" => ["required", "string"],
-            "description" => ["string"]
+            "description" => []
         ];
     }
 }
