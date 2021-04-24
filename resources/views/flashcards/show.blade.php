@@ -51,13 +51,17 @@
         </div>
     @endif
 
-    @can("update", $collection)
     <div class="mt-5">
-        <a href="{{ route("collections.flashcards.questions.create", [$collection, $flashcard]) }}" class="button">
-            Add a new question
+        <a href="{{ route("collections.flashcards.practice", [$collection, $flashcard]) }}" class="button button--action">
+            Practice
         </a>
+
+        @can("update", $collection)
+            <a href="{{ route("collections.flashcards.questions.create", [$collection, $flashcard]) }}" class="button ml-2">
+                Add a new question
+            </a>
+        @endcan
     </div>
-    @endcan
 
     <div class="my-5 border-t"></div>
 

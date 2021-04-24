@@ -32016,6 +32016,7 @@ select {
 
 .button {
   border-radius: 0.25rem;
+  cursor: pointer;
   display: inline-block;
   font-weight: 700;
   font-size: 0.875rem;
@@ -32042,7 +32043,7 @@ select {
 
 .button.button--muted {
   --tw-bg-opacity: 1;
-  background-color: rgba(120, 113, 108, var(--tw-bg-opacity));
+  background-color: rgba(68, 64, 60, var(--tw-bg-opacity));
 }
 
 .button.button--muted:hover {
@@ -32058,6 +32059,16 @@ select {
 .button.button--danger:hover {
   --tw-bg-opacity: 1;
   background-color: rgba(220, 38, 38, var(--tw-bg-opacity));
+}
+
+.button.button--action {
+  --tw-bg-opacity: 1;
+  background-color: rgba(16, 185, 129, var(--tw-bg-opacity));
+}
+
+.button.button--action:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(5, 150, 105, var(--tw-bg-opacity));
 }
 
 form.form {
@@ -32132,6 +32143,33 @@ label .label__meta {
   line-height: 2.5rem;
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
+.question {
+  min-height: 500px;
+  --tw-bg-opacity: 1;
+  background-color: rgba(41, 37, 36, var(--tw-bg-opacity));
+  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
+  justify-content: center;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  --tw-text-opacity: 1;
+  color: rgba(214, 211, 209, var(--tw-text-opacity));
+}
+
+.question.question--revealed {
+  --tw-bg-opacity: 1;
+  background-color: rgba(68, 64, 60, var(--tw-bg-opacity));
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.question.question--hidden, .question .question__content--hidden  {
+  display: none;
 }
 
 @media (min-width: 640px) {

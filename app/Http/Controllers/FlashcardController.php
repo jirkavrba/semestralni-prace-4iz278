@@ -47,6 +47,16 @@ class FlashcardController extends Controller
         ]);
     }
 
+    public function practice(FlashcardCollection $collection, Flashcard $flashcard): Response
+    {
+        $this->authorize("view", $collection);
+
+        return response()->view("flashcards.practice", [
+            "flashcard" => $flashcard,
+            "questions" => $flashcard->questions
+        ]);
+    }
+
     public function edit(FlashcardCollection $collection, Flashcard $flashcard): Response
     {
         $this->authorize("update", $collection);

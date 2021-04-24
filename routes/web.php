@@ -34,6 +34,8 @@ Route::resource("collections", FlashcardCollectionController::class);
 Route::resource("collections.flashcards", FlashcardController::class)->except("index");
 Route::resource("collections.flashcards.questions", FlashcardQuestionController::class)->except("index", "show");
 
+Route::get("/collections/{collection}/flashcards/{flashcard}/practice", [FlashcardController::class, "practice"])->name("collections.flashcards.practice");
+
 Route::post("/collections/{collection}/favorite", [FavoritesController::class, 'favoriteCollection'])->name("collections.favorite");
 Route::post("/collections/{collection}/unfavorite", [FavoritesController::class, 'unfavoriteCollection'])->name("collections.unfavorite");
 
