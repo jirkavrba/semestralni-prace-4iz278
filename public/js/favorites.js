@@ -17,6 +17,7 @@
         const performRequest = async (url) => {
             return await fetch(url, {
                 method: 'POST',
+                credentials: "same-origin",
                 headers: {
                     "X-CSRF-TOKEN": token
                 }
@@ -42,7 +43,7 @@
             const url = api.flashcards[action](collection, flashcard)
 
             await performRequest(url);
-            // await window.location.reload();
+            await window.location.reload();
         }));
 
         const collections = Array.from(document.getElementsByClassName("favorite--collection"));
@@ -61,7 +62,7 @@
             const url = api.collections[action](collection)
 
             await performRequest(url);
-            // await window.location.reload();
+            await window.location.reload();
         }));
     });
 })();

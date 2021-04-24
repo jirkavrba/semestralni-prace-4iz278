@@ -7,8 +7,13 @@
                 <h1>{{ $flashcard->title }}</h1>
                 <h2 class="uppercase font-bold ml-1 mt-3 text-sm tracking-wide text-gray-400">{{ $collection->title }}</h2>
             </div>
-            <div data-favorite-action="add" data-favorite-collection="{{ $collection->id }}" data-favorite-flashcard="{{ $flashcard->id }}"
-                 class="favorite--flashcard block fas fa-star fa-2x text-gray-600 hover:text-yellow-500 transition"></div>
+            @if ($favoriteFlashcards()->contains($flashcard->id))
+                <div data-favorite-action="remove" data-favorite-collection="{{ $collection->id }}" data-favorite-flashcard="{{ $flashcard->id }}"
+                     class="favorite--flashcard block fas fa-star fa-2x text-yellow-500 hover:text-gray-600 transition"></div>
+            @else
+                <div data-favorite-action="add" data-favorite-collection="{{ $collection->id }}" data-favorite-flashcard="{{ $flashcard->id }}"
+                     class="favorite--flashcard block fas fa-star fa-2x text-gray-600 hover:text-yellow-500 transition"></div>
+            @endif
         </div>
         <div class="border-t border-gray-700 flex flex-row items-center justify-between pt-2 mt-5">
             <p class="font-bold text-sm tracking-wide text-gray-400">

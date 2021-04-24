@@ -25,8 +25,8 @@ class FavoritesViewComposer
 
 
         return $view->with([
-            "favoriteCollections" => fn () => $this->collections ??= $user->favoriteCollections->pluck("flashcard_collection_id"),
-            "favoriteFlashcards" => fn () => $this->flashcards ??= $user->favoriteFlashcards->pluck("flashcard_id"),
+            "favoriteCollections" => fn () => $this->collections ??= $user->favoriteCollections->pluck('id'),
+            "favoriteFlashcards" => fn () => $this->flashcards ??= $user->favoriteFlashcards->pluck('id'),
         ]);
     }
 }
