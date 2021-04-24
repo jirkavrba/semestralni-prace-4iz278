@@ -10,7 +10,7 @@
             <h2 class="text-3xl font-bold text-gray-200">Your collections</h2>
             <a href="{{ route("collections.create") }}" class="button">Create a new collection</a>
         </div>
-        <div class="flex flex-row flex-wrap">
+        <div class="flex flex-row flex-wrap mt-6">
             @forelse($owned as $collection)
                 <x-flashcard-collection :collection="$collection"/>
             @empty
@@ -29,7 +29,7 @@
     <div>
         <h2 class="text-3xl font-bold text-gray-200">Public collections of other users</h2>
     </div>
-    <div class="flex flex-row flex-wrap">
+    <div class="flex flex-row flex-wrap mt-3">
         @forelse($public as $collection)
             <x-flashcard-collection :collection="$collection"/>
         @empty
