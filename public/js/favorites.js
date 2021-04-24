@@ -1,6 +1,8 @@
 (function () {
-
     document.addEventListener('DOMContentLoaded', () => {
+
+        const token = document.querySelector("meta[name=csrf-token]").getAttribute("content");
+
         const api = {
             flashcards: {
                 add: (collection, flashcard) => `/collections/${collection}/flashcards/${flashcard}/favorite`,
@@ -10,6 +12,15 @@
                 add: collection => `/collections/${collection}/favorite`,
                 remove: collection => `/collections/${collection}/unfavorite`
             },
+        }
+
+        const performRequest = async (url) => {
+            return await fetch(url, {
+                method: 'POST',
+                headers: {
+                    "X-CSRF-TOKEN": token
+                }
+            });
         }
 
         // TODO: Maybe merge those similar event handlers in some elegant way?
@@ -30,8 +41,8 @@
 
             const url = api.flashcards[action](collection, flashcard)
 
-            await fetch(url, {method: 'POST'});
-            await window.location.reload();
+            await performRequest(url);
+            // await window.location.reload();
         }));
 
         const collections = Array.from(document.getElementsByClassName("favorite--collection"));
@@ -49,8 +60,8 @@
 
             const url = api.collections[action](collection)
 
-            await fetch(url, {method: 'POST'});
-            await window.location.reload();
+            await performRequest(url);
+            // await window.location.reload();
         }));
     });
 })();
