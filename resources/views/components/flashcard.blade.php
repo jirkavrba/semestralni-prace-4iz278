@@ -7,7 +7,7 @@
                 <h1>{{ $flashcard->title }}</h1>
                 <h2 class="uppercase font-bold ml-1 mt-3 text-sm tracking-wide text-gray-400">{{ $collection->title }}</h2>
             </div>
-            @if ($favoriteFlashcards()->contains($flashcard->id))
+            @if ($favoriteFlashcards()->pluck('id')->contains($flashcard->id))
                 <div data-favorite-action="remove" data-favorite-collection="{{ $collection->id }}" data-favorite-flashcard="{{ $flashcard->id }}"
                      class="favorite--flashcard block fas fa-star fa-2x text-yellow-500 hover:text-gray-600 transition"></div>
             @else
