@@ -4,6 +4,7 @@
     <div class="flex flex-row justify-between items-center">
         <div>
             <h1 class="title">{{ $collection->title }}</h1>
+
             <div class="flex flex-row text-sm mt-1 font-bold text-gray-400 uppercase tracking-wider items-center">
                 @if ($collection->is_public)
                     <span class="fas fa-users"></span>
@@ -20,7 +21,7 @@
                 <div class="flex flex-row items-center">
                     <img src="https://gravatar.com/avatar/{{ md5($collection->user->email) }}.png?s=20" alt="Avatar"
                          class="rounded-full shadow mr-2">
-                    <p class="py-2 text-sm font-bold text-gray-600">{{ $collection->user->name }}</p>
+                    <p class="py-2 text-sm font-bold text-gray-300">{{ $collection->user->name }}</p>
                 </div>
 
                 <span class="mx-5">
@@ -49,19 +50,19 @@
     </div>
 
     @unless (empty($collection->description))
-        <div class="mt-5 text-2xl text-gray-700">
+        <div class="mt-5 text-2xl text-gray-500">
             <p>{{ $collection->description }}</p>
         </div>
     @endif
 
-    <div class="my-10 border-t"></div>
+    <div class="my-10 border-t border-gray-800"></div>
 
     <div class="flex flex-row flex-wrap">
         @can("update", $collection)
         <div class="pr-5 w-1/4">
             <a href="{{ route("collections.flashcards.create", $collection) }}"
-               class="flex flex-col w-full h-48 rounded-xl bg-gradient-to-br from-green-500 to-green-700 items-center justify-center transition transform shadow
-            hover:-translate-y-2 hover:from-green-400 hover:to-green-600 hover:shadow-xl">
+               class="flex flex-col w-full h-48 rounded-xl bg-gradient-to-br from-gray-700 to-green-900 items-center justify-center transition transform shadow
+            hover:-translate-y-2 hover:shadow-xl">
                 <div class="w-16 h-16 bg-green-800 flex items-center justify-center rounded-full">
                     <em class="fas fa-plus text-white text-4xl"></em>
                 </div>

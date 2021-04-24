@@ -10,7 +10,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <title>Flashcards</title>
 </head>
-<body>
+<body class="bg-gray-900">
 <div class="app-container">
     @if ($errors->any())
         <div class="bg-red-500">
