@@ -29,7 +29,7 @@
     <div>
         <h2 class="text-3xl font-bold text-gray-200">Public collections of other users</h2>
     </div>
-    <div class="flex flex-row flex-wrap mt-3">
+    <div class="flex flex-row flex-wrap mt-6">
         @forelse($public as $collection)
             <x-flashcard-collection :collection="$collection"/>
         @empty
