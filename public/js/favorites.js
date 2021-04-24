@@ -14,7 +14,13 @@
             },
         }
 
+        let requestLock = false;
+
         const performRequest = async (url) => {
+            if (requestLock) return;
+
+            requestLock = true;
+
             return await fetch(url, {
                 method: 'POST',
                 credentials: "same-origin",

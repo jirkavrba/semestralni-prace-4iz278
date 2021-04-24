@@ -13,5 +13,29 @@
         </div>
     </div>
 
-    <div class="my-5 border-b border-gray-800"></div>
+    @unless ($favoriteCollections()->isEmpty())
+        <div class="my-5 border-b border-gray-800"></div>
+
+        <h2 class="font-bold text-gray-500 uppercase tracking-wider text-sm mb-3">Favorite collections</h2>
+        <div>
+            <div class="flex flex-row flex-wrap">
+                @foreach ($favoriteCollections() as $collection)
+                    <x-flashcard-collection :collection="$collection"/>
+                @endforeach
+            </div>
+        </div>
+    @endunless
+
+    @unless ($favoriteFlashcards()->isEmpty())
+        <div class="my-5 border-b border-gray-800"></div>
+
+        <h2 class="font-bold text-gray-500 uppercase tracking-wider text-sm mb-3">Favorite collections</h2>
+        <div>
+            <div class="flex flex-row flex-wrap">
+                @foreach ($favoriteFlashcards() as $flashcard)
+                    <x-flashcard :flashcard="$flashcard" :collection="$flashcard->collection"/>
+                @endforeach
+            </div>
+        </div>
+    @endunless
 @endsection
