@@ -10,6 +10,8 @@ use Illuminate\Http\Response;
 
 class FlashcardCollectionController extends Controller
 {
+    private const COLLECTIONS_PER_PAGE = 3;
+
     public function __construct()
     {
         $this->middleware(Authenticate::class);
@@ -17,8 +19,16 @@ class FlashcardCollectionController extends Controller
 
     public function index(): Response
     {
-        $owned = $this->user()->collections()->with(["user", "flashcards"])->get();
-        $public = FlashcardCollection::public($this->user()->id)->with(["user", "flashcards"])->get();
+        $owned = $this->user()
+            ->collections()
+            ->with(["user", "flashcards"])
+            ->paginate(self::COLLECTIONS_PER_PAGE, ['*'], 'owned')
+            ->withQueryString();
+
+        $public = FlashcardCollection::public($this->user()->id)
+            ->with(["user", "flashcards"])
+            ->paginate(self::COLLECTIONS_PER_PAGE, ['*'], 'public')
+            ->withQueryString();
 
         return response()->view("collections.index", [
             "owned" => $owned,
